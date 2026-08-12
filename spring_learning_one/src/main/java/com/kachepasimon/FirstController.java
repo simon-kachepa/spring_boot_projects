@@ -15,13 +15,18 @@ public class FirstController {
     }
 
     //Sending message to the server
-    @PostMapping("/send")
+    @PostMapping("/post")
     public String sendMessage(@RequestBody String name) {
         return "Hello World from: " + name;
     }
 
-    @PostMapping("/send-order")
+    @PostMapping("/post-order")
     public String sendOrder(@RequestBody Order order) {
+        return "Hello World from Customer: " + order.toString();
+    }
+
+    @PostMapping("/post-order-record")
+    public String sendOrderRecord(@RequestBody OrderRecord order) {
         return "Hello World from Customer: " + order.toString();
     }
 }
