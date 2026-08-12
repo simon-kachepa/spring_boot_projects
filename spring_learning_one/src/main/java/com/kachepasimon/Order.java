@@ -1,8 +1,12 @@
 package com.kachepasimon;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class Order {
 
+    @JsonProperty("c-name")
     private String customerName;
+    @JsonProperty("productName")
     private String productName;
     private Integer quantity;
 
