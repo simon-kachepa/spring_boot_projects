@@ -11,6 +11,8 @@ public class SpringLearningOneApplication {
 
 		MyFirstService myFirstService = applicationContext.getBean(MyFirstService.class);
 		System.out.println(myFirstService.sayHello());
+		System.out.println(myFirstService.getJavaVersion());
+		System.out.println(myFirstService.getOsName());
 	}
 
 }
