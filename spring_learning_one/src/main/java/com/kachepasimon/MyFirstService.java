@@ -1,15 +1,20 @@
 package com.kachepasimon;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.core.env.Environment;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Service;
 
 @Service
+@PropertySource("classpath:custom.properties")
 public class MyFirstService {
 
     private final MyFirstClass myFirstClass;
-    Environment environment;
+    @Value("Hello my fellow Spring-boot-learners")
+    private String myCustomProperty;
+    @Value("${greeting.learners.property}")
+    private String customPropertyFromProperties;
+    @Value("${greeting.learners.from.custom.property}")
+    private String customPropertyFromAnotherFile;
 
     public MyFirstService(MyFirstClass myFirstClass){
         this.myFirstClass = myFirstClass;
@@ -19,16 +24,15 @@ public class MyFirstService {
         return "The Dependency is saying: " + myFirstClass.greeting();
     }
 
-    public String getJavaVersion(){
-        return "I am using Java Version: " + environment.getProperty("java.version");
+    public String getMyCustomProperty(){
+        return myCustomProperty;
     }
 
-    public String getOsName(){
-        return "I am using: " + environment.getProperty("os.name");
+    public String getCustomPropertyFromProperties(){
+        return customPropertyFromProperties;
     }
 
-    @Autowired
-    public void setEnvironment(Environment environment){
-        this.environment = environment;
+    public String getCustomPropertyFromAnotherFile(){
+        return customPropertyFromAnotherFile;
     }
 }

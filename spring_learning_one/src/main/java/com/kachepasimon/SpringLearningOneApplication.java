@@ -11,8 +11,9 @@ public class SpringLearningOneApplication {
 
 		MyFirstService myFirstService = applicationContext.getBean(MyFirstService.class);
 		System.out.println(myFirstService.sayHello());
-		System.out.println(myFirstService.getJavaVersion());
-		System.out.println(myFirstService.getOsName());
+		System.out.println(myFirstService.getMyCustomProperty());
+		System.out.println(myFirstService.getCustomPropertyFromProperties());
+		System.out.println(myFirstService.getCustomPropertyFromAnotherFile());
 	}
 
 }
