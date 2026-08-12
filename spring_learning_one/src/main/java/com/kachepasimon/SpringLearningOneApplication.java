@@ -7,13 +7,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class SpringLearningOneApplication {
 
 	public static void main(String[] args) {
-		var applicationContext = SpringApplication.run(SpringLearningOneApplication.class, args);
+		SpringApplication.run(SpringLearningOneApplication.class);
 
-		MyFirstService myFirstService = applicationContext.getBean(MyFirstService.class);
-		System.out.println(myFirstService.sayHello());
-		System.out.println(myFirstService.getMyCustomProperty());
-		System.out.println(myFirstService.getCustomPropertyFromProperties());
-		System.out.println(myFirstService.getCustomPropertyFromAnotherFile());
 	}
 
 }
