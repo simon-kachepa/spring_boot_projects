@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
 
 @Configuration
 public class ApplicationConfig {
@@ -18,5 +19,11 @@ public class ApplicationConfig {
     @Qualifier("beanTwo")
     public MyFirstClass mySecondBean(){
         return new MyFirstClass("Second Bean");
+    }
+
+    @Bean
+    @Primary
+    public MyFirstClass myThirdBean(){
+        return new MyFirstClass("Third Bean");
     }
 }
