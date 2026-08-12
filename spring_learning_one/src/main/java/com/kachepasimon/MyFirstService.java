@@ -1,13 +1,14 @@
 package com.kachepasimon;
 
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 @Service
 public class MyFirstService {
 
-    MyFirstClass myFirstClass;
+    private final MyFirstClass myFirstClass;
 
-    public MyFirstService(MyFirstClass myFirstClass){
+    public MyFirstService(@Qualifier("beanTwo") MyFirstClass myFirstClass){
         this.myFirstClass = myFirstClass;
     }
 
