@@ -9,8 +9,8 @@ public class SpringLearningOneApplication {
 	public static void main(String[] args) {
 		var applicationContext = SpringApplication.run(SpringLearningOneApplication.class, args);
 
-		MyFirstClass myFirstClass = applicationContext.getBean("beanOne",MyFirstClass.class);
-		System.out.println(myFirstClass.greeting());
+		MyFirstService myFirstService = applicationContext.getBean(MyFirstService.class);
+		System.out.println(myFirstService.sayHello());
 	}
 
 }
