@@ -1,9 +1,6 @@
 package com.kachepasimon;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class FirstController {
@@ -29,4 +26,10 @@ public class FirstController {
     public String sendOrderRecord(@RequestBody OrderRecord order) {
         return "Hello World from Customer: " + order.toString();
     }
+
+    @GetMapping("/get-path-var/{user-name}")
+    public String pathVar(@PathVariable("user-name") String userName) {
+        return "Hello World from " + userName;
+    }
+
 }
