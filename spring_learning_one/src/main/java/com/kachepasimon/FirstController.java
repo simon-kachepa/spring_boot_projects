@@ -32,4 +32,12 @@ public class FirstController {
         return "Hello World from " + userName;
     }
 
+    @GetMapping("/get-request-param")
+    public String paramVar(
+            @RequestParam("user-name") String userName,
+            @RequestParam("user-last-name") String userLastName
+    ) {
+        return "Hello World from " + userName + " " + userLastName;
+    }
+
 }
