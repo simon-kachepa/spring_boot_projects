@@ -1,6 +1,6 @@
 services:
   db:
-    container_name: postgres-spring-boot
+    container_name: my-app
     image: postgres:latest
     environment:
       POSTGRES_USER: kachepasimon
