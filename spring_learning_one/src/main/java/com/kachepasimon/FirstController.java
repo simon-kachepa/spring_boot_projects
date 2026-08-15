@@ -1,6 +1,9 @@
 package com.kachepasimon;
 
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class FirstController {
@@ -15,29 +18,6 @@ public class FirstController {
     @PostMapping("/post")
     public String sendMessage(@RequestBody String name) {
         return "Hello World from: " + name;
-    }
-
-    @PostMapping("/post-order")
-    public String sendOrder(@RequestBody Order order) {
-        return "Hello World from Customer: " + order.toString();
-    }
-
-    @PostMapping("/post-order-record")
-    public String sendOrderRecord(@RequestBody OrderRecord order) {
-        return "Hello World from Customer: " + order.toString();
-    }
-
-    @GetMapping("/get-path-var/{user-name}")
-    public String pathVar(@PathVariable("user-name") String userName) {
-        return "Hello World from " + userName;
-    }
-
-    @GetMapping("/get-request-param")
-    public String paramVar(
-            @RequestParam("user-name") String userName,
-            @RequestParam("user-last-name") String userLastName
-    ) {
-        return "Hello World from " + userName + " " + userLastName;
     }
 
 }
