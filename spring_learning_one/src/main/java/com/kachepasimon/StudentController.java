@@ -21,15 +21,22 @@ public class StudentController {
     }
 
     @GetMapping("/students")
-    public List<Student> getStudent() {
+    public List<Student> getAllStudents() {
         return studentRepository.findAll();
     }
 
-    @GetMapping("/students/search/{student-id}")
-    public Student createStudent(
+    @GetMapping("/students/search/by-id/{student-id}")
+    public Student getStudentById(
             @PathVariable("student-id")  Integer studentId
     ) {
         return studentRepository.findById(studentId).orElse(null);
+    }
+
+    @GetMapping("/students/search/by-name/{student-firstname}")
+    public Student getStudentsByFirstName(
+            @PathVariable("student-firstname")  String firstName
+    ) {
+        return studentRepository.findAllByFirstNameContaining(firstName);
     }
 
 
