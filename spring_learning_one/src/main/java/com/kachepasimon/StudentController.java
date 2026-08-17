@@ -1,5 +1,6 @@
 package com.kachepasimon;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -37,6 +38,14 @@ public class StudentController {
             @PathVariable("student-firstname")  String firstName
     ) {
         return studentRepository.findAllByFirstNameContaining(firstName);
+    }
+
+    @DeleteMapping("/students/{student-id}")
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    public void deleteStudentById(
+            @PathVariable("student-id")  Integer studentId
+    ) {
+        studentRepository.deleteById(studentId);
     }
 
 
