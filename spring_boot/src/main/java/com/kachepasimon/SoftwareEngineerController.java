@@ -25,7 +25,8 @@ public class SoftwareEngineerController {
     }
 
     @DeleteMapping
-    public void deleteSoftwareEngineer(){
+    public void deleteSoftwareEngineer(@PathVariable Long id){
+        softwareEngineerService.deleteSoftwareEngineer(id);
         
     }
 }
