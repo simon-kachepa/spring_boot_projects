@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@RequestMapping("/api/v1/students")
 public class StudentController {
 
     private final StudentRepository studentRepository;
@@ -14,33 +15,33 @@ public class StudentController {
         this.studentRepository = studentRepository;
     }
 
-    @PostMapping("/students")
+    @PostMapping
     public Student createStudent(
             @RequestBody Student student
     ) {
         return studentRepository.save(student);
     }
 
-    @GetMapping("/students")
+    @GetMapping
     public List<Student> getAllStudents() {
         return studentRepository.findAll();
     }
 
-    @GetMapping("/students/search/by-id/{student-id}")
+    @GetMapping("/search/by-id/{student-id}")
     public Student getStudentById(
             @PathVariable("student-id")  Integer studentId
     ) {
         return studentRepository.findById(studentId).orElse(null);
     }
 
-    @GetMapping("/students/search/by-name/{student-firstname}")
+    @GetMapping("/search/by-name/{student-firstname}")
     public Student getStudentsByFirstName(
             @PathVariable("student-firstname")  String firstName
     ) {
         return studentRepository.findAllByFirstNameContaining(firstName);
     }
 
-    @DeleteMapping("/students/{student-id}")
+    @DeleteMapping("/{student-id}")
     @ResponseStatus(HttpStatus.ACCEPTED)
     public void deleteStudentById(
             @PathVariable("student-id")  Integer studentId
