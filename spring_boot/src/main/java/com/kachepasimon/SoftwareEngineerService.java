@@ -20,4 +20,8 @@ public class SoftwareEngineerService {
     public void insertSoftwareEngineer(SoftwareEngineer softwareEngineer) {
         softwareEngineerRepository.save(softwareEngineer);
     }
+
+    public void deleteSoftwareEngineer(Long id){
+        softwareEngineerRepository.deleteById(id)
+    }
 }
