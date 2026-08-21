@@ -1,8 +1,6 @@
 package com.kachepasimon;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -19,5 +17,15 @@ public class StudentProfileController {
     @GetMapping
     public List<StudentProfile> getAllStudentProfiles() {
         return studentProfileRepository.findAll();
+    }
+
+    @PostMapping
+    public StudentProfile createStudentProfile(@RequestBody StudentProfile studentProfile) {
+        return studentProfileRepository.save(studentProfile);
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteStudentProfileById(@PathVariable("id") Integer id) {
+        studentProfileRepository.deleteById(id);
     }
 }
