@@ -1,8 +1,6 @@
 package com.kachepasimon;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -19,5 +17,10 @@ public class SchoolController {
     @GetMapping
     public List<School> getAllSchools() {
         return schoolRepository.findAll();
+    }
+
+    @PostMapping
+    public School createSchool(@RequestBody School school) {
+        return schoolRepository.save(school);
     }
 }
