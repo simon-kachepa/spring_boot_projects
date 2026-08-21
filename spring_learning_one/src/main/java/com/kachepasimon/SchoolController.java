@@ -23,4 +23,9 @@ public class SchoolController {
     public School createSchool(@RequestBody School school) {
         return schoolRepository.save(school);
     }
+
+    @PutMapping
+    public School updateSchool(@RequestBody School school) {
+        return schoolRepository.save(school);
+    }
 }
