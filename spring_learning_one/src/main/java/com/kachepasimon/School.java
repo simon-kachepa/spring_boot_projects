@@ -21,6 +21,14 @@ public class School {
     public School() {
     }
 
+    public Integer getSchoolId() {
+        return schoolId;
+    }
+
+    public void setSchoolId(Integer schoolId) {
+        this.schoolId = schoolId;
+    }
+
     public School(String schoolName) {
         this.schoolName = schoolName;
     }
