@@ -19,6 +19,10 @@ public class SchoolController {
         return schoolRepository.findAll();
     }
 
+    @GetMapping("/{id}")
+    public School getSchoolById(@PathVariable Integer id) {
+        return schoolRepository.findById(id).orElse(null);
+    }
     @PostMapping
     public School createSchool(@RequestBody School school) {
         return schoolRepository.save(school);
