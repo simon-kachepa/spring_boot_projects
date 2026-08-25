@@ -16,10 +16,35 @@ public class StudentController {
     }
 
     @PostMapping
-    public Student createStudent(
-            @RequestBody Student student
+    public StudentResponseDto createStudent(
+            @RequestBody StudentDto studentDto
     ) {
-        return studentRepository.save(student);
+        var student = toStudent(studentDto);
+        var savedStudent = studentRepository.save(student);
+        return toStudentResponseDto(savedStudent);
+    }
+
+    public Student toStudent(StudentDto dto) {
+        var student = new Student();
+        student.setFirstName(dto.firstName());
+        student.setLastName(dto.lastName());
+        student.setEmail(dto.email());
+        student.setAge(dto.age());
+
+        var school = new School();
+        school.setSchoolId(dto.schoolId());
+
+        student.setSchool(school);
+
+        return student;
+    }
+
+    public StudentResponseDto toStudentResponseDto(Student student) {
+        return new StudentResponseDto(
+                student.getFirstName(),
+                student.getFirstName(),
+                student.getEmail()
+        );
     }
 
     @GetMapping

@@ -1,5 +1,6 @@
 package com.kachepasimon;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
@@ -18,6 +19,7 @@ public class School {
             cascade = CascadeType.ALL
     )
     @JsonManagedReference
+    //@JsonIgnoreProperties("school")
     private List<Student> student;
 
     public School() {
