@@ -3,6 +3,7 @@ package com.kachepasimon;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api/v1/schools")
@@ -15,8 +16,16 @@ public class SchoolController {
     }
 
     @GetMapping
-    public List<School> getAllSchools() {
-        return schoolRepository.findAll();
+    public List<SchoolDto> getAllSchools() {
+
+        return schoolRepository.findAll()
+                .stream()
+                .map(this::toSchoolDto)
+                .collect(Collectors.toList());
+    }
+
+    private SchoolDto toSchoolDto(School school) {
+        return new SchoolDto(school.getName());
     }
 
     @GetMapping("/{id}")
@@ -24,8 +33,19 @@ public class SchoolController {
         return schoolRepository.findById(id).orElse(null);
     }
     @PostMapping
-    public School createSchool(@RequestBody School school) {
-        return schoolRepository.save(school);
+    public SchoolDto createSchool(@RequestBody SchoolDto dto) {
+
+        var school = toSchool(dto);
+        schoolRepository.save(school);
+        return dto;
+    }
+
+    private School toSchool(SchoolDto dto) {
+
+        var school = new School();
+        school.setName(dto.name());
+
+        return school;
     }
 
     @PutMapping

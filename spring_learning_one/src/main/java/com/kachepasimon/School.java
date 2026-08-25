@@ -12,8 +12,8 @@ public class School {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer schoolId;
-    private String schoolName;
+    private Integer id;
+    private String name;
     @OneToMany(
             mappedBy="school",
             cascade = CascadeType.ALL
@@ -25,24 +25,23 @@ public class School {
     public School() {
     }
 
-    public Integer getSchoolId() {
-        return schoolId;
+    public Integer getId() {
+        return id;
     }
 
-    public void setSchoolId(Integer schoolId) {
-        this.schoolId = schoolId;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
-    public School(String schoolName) {
-        this.schoolName = schoolName;
+    public School(String name) {
+        this.name = name;
     }
 
-    public String getSchoolName() {
-        return schoolName;
-    }
+    public String getName() {
+        return name; }
 
-    public void setSchoolName(String schoolName) {
-        this.schoolName = schoolName;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public List<Student> getStudent() {
