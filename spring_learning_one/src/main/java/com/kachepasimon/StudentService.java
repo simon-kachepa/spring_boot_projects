@@ -1,8 +1,6 @@
 package com.kachepasimon;
 
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -19,7 +17,7 @@ public class StudentService {
     }
 
     public StudentResponseDto saveStudent(
-            @RequestBody StudentDto studentDto
+            StudentDto studentDto
     ) {
         var student = studentMapper.toStudent(studentDto);
         var savedStudent = studentRepository.save(student);
@@ -42,14 +40,14 @@ public class StudentService {
     }
 
     public List<StudentResponseDto> findAllStudentsByFirstName(String firstName) {
-        return studentRepository.findAll()
+        return studentRepository.findAllByFirstNameContaining(firstName)
                 .stream()
                 .map(studentMapper::toStudentResponseDto)
                 .collect(Collectors.toList());
     }
 
     public void deleteStudentById(
-            @PathVariable("student-id")  Integer studentId
+            Integer studentId
     ) {
         studentRepository.deleteById(studentId);
     }

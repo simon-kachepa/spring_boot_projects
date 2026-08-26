@@ -1,55 +1,47 @@
 package com.kachepasimon;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api/v1/schools")
 public class SchoolController {
 
-    private final SchoolRepository schoolRepository;
+    private final SchoolService schoolService;
 
-    public SchoolController(SchoolRepository schoolRepository) {
-        this.schoolRepository = schoolRepository;
+    public SchoolController(SchoolService schoolService) {
+        this.schoolService = schoolService;
+    }
+
+    @PostMapping
+    public SchoolDto saveSchool(@RequestBody SchoolDto dto) {
+
+        return this.schoolService.saveSchool(dto);
     }
 
     @GetMapping
-    public List<SchoolDto> getAllSchools() {
+    public List<SchoolDto> findAllSchools() {
 
-        return schoolRepository.findAll()
-                .stream()
-                .map(this::toSchoolDto)
-                .collect(Collectors.toList());
-    }
-
-    private SchoolDto toSchoolDto(School school) {
-        return new SchoolDto(school.getName());
+        return this.schoolService.findAllSchools();
     }
 
     @GetMapping("/{id}")
-    public School getSchoolById(@PathVariable Integer id) {
-        return schoolRepository.findById(id).orElse(null);
-    }
-    @PostMapping
-    public SchoolDto createSchool(@RequestBody SchoolDto dto) {
+    public SchoolDto findSchoolById(@PathVariable Integer id) {
 
-        var school = toSchool(dto);
-        schoolRepository.save(school);
-        return dto;
+        return schoolService.findSchoolById(id);
     }
 
-    private School toSchool(SchoolDto dto) {
-
-        var school = new School();
-        school.setName(dto.name());
-
-        return school;
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    public void deleteSchoolById(@PathVariable Integer id) {
+        schoolService.deleteSchoolById(id);
     }
 
     @PutMapping
-    public School updateSchool(@RequestBody School school) {
-        return schoolRepository.save(school);
+    public SchoolDto updateSchool(@RequestBody SchoolDto dto) {
+
+        return schoolService.updateSchool(dto);
     }
 }

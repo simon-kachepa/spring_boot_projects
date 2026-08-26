@@ -2,7 +2,11 @@ package com.kachepasimon;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
+import java.util.Collection;
+import java.util.List;
+
 public interface StudentRepository extends JpaRepository<Student, Integer> {
 
-    public Student findAllByFirstNameContaining(String firstName);
+    public List<Student> findAllByFirstNameContaining(String firstName);
+
 }
