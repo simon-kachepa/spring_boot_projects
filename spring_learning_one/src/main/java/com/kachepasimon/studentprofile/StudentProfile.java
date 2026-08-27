@@ -1,5 +1,6 @@
-package com.kachepasimon;
+package com.kachepasimon.studentprofile;
 
+import com.kachepasimon.student.Student;
 import jakarta.persistence.*;
 
 @Entity

@@ -1,6 +1,8 @@
-package com.kachepasimon;
+package com.kachepasimon.student;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.kachepasimon.studentprofile.StudentProfile;
+import com.kachepasimon.school.School;
 import jakarta.persistence.*;
 
 @Entity

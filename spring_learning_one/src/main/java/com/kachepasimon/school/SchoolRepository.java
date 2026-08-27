@@ -1,4 +1,4 @@
-package com.kachepasimon;
+package com.kachepasimon.school;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

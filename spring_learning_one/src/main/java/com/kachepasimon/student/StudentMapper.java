@@ -1,5 +1,6 @@
-package com.kachepasimon;
+package com.kachepasimon.student;
 
+import com.kachepasimon.school.School;
 import org.springframework.stereotype.Service;
 
 @Service

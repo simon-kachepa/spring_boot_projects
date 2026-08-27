@@ -1,4 +1,4 @@
-package com.kachepasimon;
+package com.kachepasimon.student;
 
 public record StudentResponseDto(
         String firstName,

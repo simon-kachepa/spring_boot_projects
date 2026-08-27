@@ -1,6 +1,7 @@
-package com.kachepasimon;
+package com.kachepasimon.school;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.kachepasimon.student.Student;
 import jakarta.persistence.*;
 
 import java.util.List;

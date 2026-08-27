@@ -1,4 +1,4 @@
-package com.kachepasimon;
+package com.kachepasimon.school;
 
 import org.springframework.stereotype.Service;
 

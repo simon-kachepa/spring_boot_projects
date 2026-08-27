@@ -1,5 +1,6 @@
-package com.kachepasimon;
+package com.kachepasimon.student;
 
+import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,7 +18,7 @@ public class StudentController {
 
     @PostMapping
     public StudentResponseDto saveStudent(
-            @RequestBody StudentDto studentDto
+            @Valid @RequestBody StudentDto studentDto
     ) {
         return this.studentService.saveStudent(studentDto);
     }
